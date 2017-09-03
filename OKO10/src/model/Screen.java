@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -12,9 +11,7 @@ import util.PlayerUtil;
 
 public class Screen {
 	private static Screen instance;
-	private   Player player;
-	private   Player computer;
-	private List<StringBuilder> lines;
+
 	
 //niektore nevyuzite premmenne som schvalne nechal, keby ze sa rozhodnem zmenit vysledny kod
 	
