@@ -2,13 +2,14 @@ package app;
 
 import java.util.Scanner;
 
-import dimensionsexception.ExceptionDimensions;
+import dimensionsexception.DimensionsException;
+import model.Const;
 import model.Player;
 import model.Screen;
 
 public class Start {
-
-	public static void main(String[] args) throws ExceptionDimensions{
+	
+	public static void gameInit(){
 		String a;
 		Scanner bc = new Scanner(System.in);
 		 
@@ -26,7 +27,10 @@ public class Start {
 		case "y":
 			Player player1 = new Player();//
 			Player player2 = new Player();
-			Screen.drawMenu(player1, player2);
+			
+			
+				Screen.drawMenu(player1, player2);
+				
 			System.out.println("Press any key");
 			break;
 			
@@ -41,7 +45,20 @@ public class Start {
 			
 	bc.close();	
 		
+	}
 
+	public static void main(String[] args) throws DimensionsException{
+		
+	
+		try {
+			gameInit();
+			if(Const.CARD_SIZE_X < 6 ||Const.CARD_SIZE_Y < 6 ){
+				throw new DimensionsException("Minimum of card size is 6x6 ");
+			}
+		} catch (DimensionsException e) {
+			
+			e.printStackTrace();
+		}
 		
 		
 		

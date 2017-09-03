@@ -1,15 +1,15 @@
 package dimensionsexception;
 
-public class ExceptionDimensions extends Exception {
+public class DimensionsException extends Exception {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ExceptionDimensions(){
+	public DimensionsException(){
 		super();
 	}
-	public ExceptionDimensions(String message){
+	public DimensionsException(String message){
 		super(message);
 	}
 }
