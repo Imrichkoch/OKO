@@ -10,6 +10,26 @@ import util.CardUtil;
 import util.PlayerUtil;
 
 public class Screen {
+	private static int playerWins;
+
+	public int getPlayerWins() {
+		return playerWins;
+	}
+
+	public void setPlayerWins(int playerWins) {
+		this.playerWins = playerWins;
+	}
+
+	public int getComputerWins() {
+		return computerWins;
+	}
+
+	public void setComputerWins(int computerWins) {
+		this.computerWins = computerWins;
+	}
+
+	private static int computerWins;
+
 	private static Screen instance;
 
 	// niektore nevyuzite premmenne som schvalne nechal, keby ze sa rozhodnem
@@ -20,6 +40,12 @@ public class Screen {
 			instance = new Screen();
 		}
 		return instance;
+	}
+
+	public static void showGameStatus() {
+		System.out.println("\nGame status:");
+		System.out.println(" Player wins: " + playerWins);
+		System.out.println(" Computer wins: " + computerWins);
 	}
 
 	public static void drawMenu(Player player, Player computer) {
@@ -38,6 +64,8 @@ public class Screen {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Choose option from the menu:\n1.\tStart Game (Press '1') \n2.\tQuit (Press 'q')");
+
+		showGameStatus();
 
 		a = sc.next();
 
@@ -75,10 +103,14 @@ public class Screen {
 					// karty
 					if ((cardsValueOfPlayer += player.getValueCard()) > 21) {
 						System.out.println("Game over, you lost, computer win");
+						computerWins++;
+						showGameStatus();
 						return;
 					}
 					if ((cardsValueOfComputer += computer.getValueCard()) > 21) {
 						System.out.println("You win, computer lost");
+						playerWins++;
+						showGameStatus();
 						return;
 					}
 					System.out.println("Size of deck: " + cards.size() + " \nactual Player cards value: "
@@ -94,12 +126,17 @@ public class Screen {
 					// podmienky pre vyhru/prehru/remizu
 					if ((cardsValueOfPlayer > cardsValueOfComputer) && (cardsValueOfPlayer < 21)) {
 						System.out.println("You win, computer lost");
+						playerWins++;
+						showGameStatus();
 						return;
 					} else if ((cardsValueOfPlayer < cardsValueOfComputer) && (cardsValueOfPlayer < 21)) {
 						System.out.println("Game over, you lost, computer win");
+						computerWins++;
+						showGameStatus();
 						return;
 					} else if ((cardsValueOfPlayer == cardsValueOfComputer) && (cardsValueOfPlayer < 21)) {
 						System.out.println("DRAW");
+						showGameStatus();
 						return;
 					}
 				default:
