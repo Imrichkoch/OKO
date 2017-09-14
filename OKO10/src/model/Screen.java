@@ -32,9 +32,6 @@ public class Screen {
 
 	private static Screen instance;
 
-	// niektore nevyuzite premmenne som schvalne nechal, keby ze sa rozhodnem
-	// zmenit vysledny kod
-
 	public static Screen getInstance() {
 		if (instance == null) {
 			instance = new Screen();
