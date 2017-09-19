@@ -6,14 +6,8 @@ import model.Value;
 
 public class CardFactory {
 
-	private static CardFactory instance;
-
-	// zabezpecenie aby len jedna faktory mohla byt vytvorena
-	private static CardFactory getInstance() {
-		if (instance == null) {
-			return new CardFactory();
-		}
-		return instance;
+	public CardFactory() {
+		// TODO Auto-generated constructor stub
 	}
 
 	// metoda ktora vytvori kartu na mieru

@@ -10,10 +10,6 @@ public class Card {
 		this.value = value;
 	}
 
-	public Card() {
-
-	}
-
 	public Color getColor() {
 		return color;
 	}

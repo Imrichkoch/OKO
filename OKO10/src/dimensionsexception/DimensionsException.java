@@ -6,10 +6,11 @@ public class DimensionsException extends Exception {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public DimensionsException(){
+	public DimensionsException() {
 		super();
 	}
-	public DimensionsException(String message){
+
+	public DimensionsException(String message) {
 		super(message);
 	}
 }

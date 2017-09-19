@@ -17,7 +17,7 @@ public class Start {
 
 		int computerWins = 0;
 
-		System.out.println("EYE - card game\nPress any key");
+		System.out.println("EYE - card game\nPress any letter and Enter");
 
 		a = bc.next();
 
@@ -33,7 +33,7 @@ public class Start {
 
 				Screen.drawMenu(player1, player2);
 
-				System.out.println("Press any key");
+				System.out.println("Press any letter and Enter");
 				break;
 
 			default:
@@ -47,12 +47,14 @@ public class Start {
 
 	}
 
-	public static void main(String[] args) throws DimensionsException {
+	public static void main(String[] args) {
 
 		try {
-			gameInit();
+
 			if (Const.CARD_SIZE_X < 6 || Const.CARD_SIZE_Y < 6) {
 				throw new DimensionsException("Minimum of card size is 6x6 ");
+			} else {
+				gameInit();
 			}
 		} catch (DimensionsException e) {
 

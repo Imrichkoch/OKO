@@ -22,11 +22,10 @@ public class Player {
 	public void setCards(ArrayList<Card> cards) {
 		this.cards = cards;
 	}
-	
-	
-	public void addCard(Card card){
+
+	public void addCard(Card card) {
 		this.cards.add(card);
-		this.valueCard=+card.getValue().getValue();
+		this.valueCard = +card.getValue().getValue();
 	}
-	
+
 }
