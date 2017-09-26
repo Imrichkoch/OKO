@@ -47,19 +47,13 @@ public class Start {
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DimensionsException {
 
-		try {
+		if (Const.CARD_SIZE_X < 6 || Const.CARD_SIZE_Y < 6) {
 
-			if (Const.CARD_SIZE_X < 6 || Const.CARD_SIZE_Y < 6) {
-				throw new DimensionsException("Minimum of card size is 6x6 ");
-			} else {
-				gameInit();
-			}
-		} catch (DimensionsException e) {
+			throw new DimensionsException("Minimum of card size is 6x6 ");
 
-			e.printStackTrace();
 		}
-
+		gameInit();
 	}
 }
