@@ -91,22 +91,27 @@ public class Screen {
 				switch (a) {
 				case "h":
 					pu.addCardToPlayer(cards, player);
-					if (com.nextInt(3) == 1)
+					if (com.nextInt(3) == 1) {
 						pu.addCardToPlayer(cards, computer);// sanca ze si
 															// pocitac potiahne
 															// kartu je 1/3
+						cardsValueOfComputer += computer.getValueCard();
+
+					}
 					cu.drawPlayer(player, computer, "you", "computer", true, false);
 					// podmienky pre vyhru/prehru + pripocita hodnotu aktualnej
 					// karty
 					if ((cardsValueOfPlayer += player.getValueCard()) > 21) {
 						System.out.println("Game over, you lost, computer win");
 						computerWins++;
+
 						showGameStatus();
 						return;
 					}
-					if ((cardsValueOfComputer += computer.getValueCard()) > 21) {
+					if (cardsValueOfComputer > 21) {
 						System.out.println("You win, computer lost");
 						playerWins++;
+
 						showGameStatus();
 						return;
 					}
@@ -121,18 +126,22 @@ public class Screen {
 					cu.drawPlayer(player, computer, "you", "computer", true, false);
 					System.out.println("Size of deck: " + cards.size() + " actual card value: " + cardsValueOfPlayer);
 					// podmienky pre vyhru/prehru/remizu
-					if ((cardsValueOfPlayer > cardsValueOfComputer) && (cardsValueOfPlayer < 21)) {
+					if ((cardsValueOfPlayer > cardsValueOfComputer) && (cardsValueOfPlayer <= 21)) {
 						System.out.println("You win, computer lost");
 						playerWins++;
+
 						showGameStatus();
 						return;
-					} else if ((cardsValueOfPlayer < cardsValueOfComputer) && (cardsValueOfPlayer < 21)) {
+					} else if ((cardsValueOfPlayer < cardsValueOfComputer) && (cardsValueOfComputer <= 21)) {
 						System.out.println("Game over, you lost, computer win");
 						computerWins++;
+
 						showGameStatus();
 						return;
-					} else if ((cardsValueOfPlayer == cardsValueOfComputer) && (cardsValueOfPlayer < 21)) {
+					} else if ((cardsValueOfPlayer == cardsValueOfComputer) && (cardsValueOfPlayer <= 21)
+							&& (cardsValueOfComputer <= 21)) {
 						System.out.println("DRAW");
+
 						showGameStatus();
 						return;
 					}
@@ -141,6 +150,9 @@ public class Screen {
 					break;
 
 				}
+				System.out.println();
+				System.out.println("Size of deck: " + cards.size() + " \nactual Player cards value: "
+						+ cardsValueOfPlayer + "\nactual Computer cards value: " + cardsValueOfComputer);
 				a = sc.next();
 
 			}
@@ -153,6 +165,7 @@ public class Screen {
 			return;
 
 		}
+
 	}
 
 }
